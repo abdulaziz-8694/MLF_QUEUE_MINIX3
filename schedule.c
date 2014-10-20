@@ -85,42 +85,6 @@ static void pick_cpu(struct schedproc * proc)
 #endif
 }
 
-/*int do_lottery()
-{
-	struct schedproc *rmp;
-	int total_tickets=0;
-	int i;
-	for(i=0;i<NR_PROCS;i++){
-		rmp=&schedproc[i];
-		if((rmp->flags && IN_USE) &&(rmp->priority>MAX_USER_Q))
-		{
-			total_tickets+=rmp->num_of_tickets;
-		}
-	}
-	printf("In lottery\n"); 
-	int lucky = total_tickets ? random()%total_tickets:0;
-	printf("Lottery calculated: %d",lucky);
-	int prev_prio,lottery_succeeded=-1;
-	for(i=0;i<NR_PROCS;i++){
-		rmp = &schedproc[i];
-		if((rmp->flags && IN_USE) && (rmp->priority>MAX_USER_Q))
-		{
-			prev_prio=rmp->priority;
-			if(random>=0)
-			{
-				lucky-=rmp->num_of_tickets;
-				if(lucky<0){
-					lottery_succeeded=1;
-					rmp->priority=MAX_USER_Q;
-				}
-			}
-			if(prev_prio!=rmp->priority){
-				schedule_process_local(rmp);
-			}
-		}
-	}
-	return OK;
-}*/
 
 /*===========================================================================*
  *				do_noquantum				     *
